@@ -7,25 +7,30 @@ const Header=(props)=>{
   </div>)
 }
 const Content=(props)=>{
+  console.log(props.content[0])
   return(
     <div>
-      <Part name={props.name[0]} number={props.number[0]}/>
-      <Part name={props.name[1]} number={props.number[1]}/>
-      <Part name={props.name[2]} number={props.number[2]}/>
+      <Part name={props.content[0].name} exercises={props.content[0].exercises}/>
+      <Part name={props.content[1].name} exercises={props.content[1].exercises}/>
+      <Part name={props.content[2].name} exercises={props.content[2].exercises}/>
     </div>
   )
 }
 const Part=(props)=>{
+  
   return(
     <div>
-      <p>{props.name} {props.number}</p>
+      <p>{props.name} {props.exercises}</p>
+      
     </div>
   )
 }
 const Total=(props)=>{
+  console.log(props)
   return(
     <div>
-<p>{props.name} {props.number}</p>
+      
+    <p>{props.content[3].name}   {props.content[3].exercises}</p>
     </div>
   )
 }
@@ -33,19 +38,33 @@ const Total=(props)=>{
 
 
   const App = () => {
-    const course = 'Half Stack application development'
-    const part1 = 'Fundamentals of React'
-    const exercises1 = 10
-    const part2 = 'Using props to pass data'
-    const exercises2 = 7
-    const part3 = 'State of a component'
-    const exercises3 = 14
+    
+    const course={
+      name: 'Half Stack application development',
+      parts:[
+      {
+        name:'Fundamentals of React',
+        exercises:10
+      },{
+        name:'Using props to pass data',
+        exercises:7
+      },{
+        name:'State of a component',
+        exercises:14
+      },{
+        name:'Number of exercises',
+        exercises:31
+      }
+    ]
+    }
+    
+
     
     return(
     <div>
-      <Header name={course} />
-      <Content name={[part1,part2,part3]} number={[exercises1,exercises2,exercises3]} />
-      <Total name="Number of exercises " number={exercises1+exercises2+exercises3}/>
+      <Header name={course.name} />
+      <Content content={course.parts} />
+      <Total content={course.parts}/>
     
     
     
