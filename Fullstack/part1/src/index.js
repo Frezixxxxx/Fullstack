@@ -4,6 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+/*
+let counter=1
+const refresh=()=>{
+  ReactDOM.render(<App counter={counter}/>,
+  document.getElementById('root'))
+}
+setInterval(()=>{
+  refresh()
+  counter+=1
+},5000)
+*/
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

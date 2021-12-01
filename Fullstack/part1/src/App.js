@@ -1,13 +1,30 @@
 
-import React from 'react'
+import React,{useState} from 'react'
 import './App.css';
 const Header=(props)=>{
   return (<div>
     <h1>{props.name}</h1>
   </div>)
 }
+const Hello=(props)=>{
+  const name=props.name
+  const age=props.age
+  const bornYear=()=>new Date().getFullYear()-age
+  console.log(bornYear())
+  console.log(new Date().getFullYear())
+  return(
+    <div>
+      <p>
+        Hello {name}, you are {age} years old.
+      </p>
+      <p>
+        So you are probably born in {bornYear()}
+      </p>
+    </div>
+  )
+}
 const Content=(props)=>{
-  console.log(props.content[0])
+  
   return(
     <div>
       <Part name={props.content[0].name} exercises={props.content[0].exercises}/>
@@ -26,7 +43,7 @@ const Part=(props)=>{
   )
 }
 const Total=(props)=>{
-  console.log(props)
+ 
   return(
     <div>
       
@@ -38,7 +55,31 @@ const Total=(props)=>{
 
 
   const App = () => {
-    
+    const[counter, setCounter]=useState(0)
+    const handleClick=()=>{
+      console.log('clicked')
+      //setCounter(counter+1)
+    }
+    /*
+    setTimeout(
+      ()=>setCounter(counter+1),
+      1000
+    )
+    */
+    //console.log('rendering...'+{counter})
+    return (
+      <div>{counter}
+      <button onClick={()=>setCounter(counter+1)}>
+        plus
+      </button>
+      <button onClick={()=>setCounter(0)}>zero</button>
+      </div>
+    )
+  }
+
+
+
+/*
     const course={
       name: 'Half Stack application development',
       parts:[
@@ -65,11 +106,12 @@ const Total=(props)=>{
       <Header name={course.name} />
       <Content content={course.parts} />
       <Total content={course.parts}/>
-    
+      <Hello name="Josh" age={10*2}/>
     
     
     </div>
     )
   }
+  */
 
 export default App;
